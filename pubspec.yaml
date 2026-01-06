@@ -1,6 +1,6 @@
 name: reactive_orm_forms
 description: "Reactive form widgets for Flutter powered by reactive_orm, with field-wise updates and minimal boilerplate."
-version: 1.0.1
+version: 1.2.0
 homepage: 'https://github.com/PravinKunnure/reactive_orm_forms'
 repository: 'https://github.com/PravinKunnure/reactive_orm_forms.git'
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  reactive_orm: ^1.0.0
+  reactive_orm: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +23,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
 
   # To add assets to your package, add an assets section, like this:
   # assets:

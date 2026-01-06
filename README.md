@@ -3,7 +3,7 @@
 [![Pub Version](https://img.shields.io/pub/v/reactive_orm_forms)](https://pub.dev/packages/reactive_orm_forms) | [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 
 > Lightweight Flutter package for **reactive form widgets** powered by `reactive_orm`.  
-> Provides field-wise reactivity, minimal boilerplate, and ready-to-use form controls.
+> Provides **field-wise reactivity**, **computed/watch helpers**, and ready-to-use form controls.
 
 ---
 
@@ -15,17 +15,20 @@
 
 ## ✨ Features
 
-- ✅ Reactive form widgets for Flutter
+- ✅ Fully reactive form widgets for Flutter
 - ✅ Works seamlessly with `ReactiveModel` from `reactive_orm`
-- ✅ Field-wise updates for optimal UI performance
+- ✅ Field-wise updates for optimized UI performance
 - ✅ Includes:
-    - `ReactiveTextField`
-    - `ReactiveCheckbox`
-    - `ReactiveSelectorF` (Dropdown)
-    - `ReactiveDatePicker`
-    - `ReactiveSlider`
-- ✅ Easy integration with your domain models
+  - `ReactiveTextField` – Text input bound to a model field
+  - `ReactiveCheckbox` – Boolean input
+  - `ReactiveSwitch` – Toggle input
+  - `ReactiveSelectorF` – Dropdown/selector
+  - `ReactiveDropdown` – Generic dropdown
+  - `ReactiveDatePicker` – Date input
+  - `ReactiveSlider` – Slider input
+- ✅ Supports **watchField()** and **watchComputed()** for ergonomic UI updates
 - ✅ Nested and shared models supported
+- ✅ Minimal boilerplate; integrates directly with your domain models
 
 ---
 
@@ -36,10 +39,11 @@
 ```yaml
 dependencies:
   reactive_orm_forms: <latest_version>
+``` 
+
+## 🧩Usage Example:
 
 ```
-
-## 🧩 Usage Example:
 import 'package:flutter/material.dart';
 import 'package:reactive_orm/reactive_orm.dart';
 import 'package:reactive_orm_forms/reactive_orm_forms.dart';
@@ -89,8 +93,13 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            ReactiveTextField(model: task, fieldName: "title", hintText: "Task title"),
+            ReactiveTextField(
+              model: task,
+              fieldName: "title",
+              hintText: "Task title",
+            ),
             ReactiveCheckbox(model: task, fieldName: "completed"),
+            ReactiveSwitch(model: task, fieldName: "completed"),
             ReactiveBuilder<Task>(
               model: task,
               fields: [#title, #completed],
@@ -102,22 +111,34 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+```
+
 
 ## 🔧 Widgets
-- ReactiveTextField: Text input bound to a reactive model field
-- ReactiveCheckbox: Boolean input
-- ReactiveSelectorF: Dropdown/selector
-- ReactiveDatePicker: Date selection
-- ReactiveSlider: Slider input
+- ReactiveTextField – Text input bound to a reactive model field
+- ReactiveCheckbox – Boolean input
+- ReactiveSwitch – Toggle input
+- ReactiveSelectorF – Dropdown / selector
+- ReactiveDropdown – Generic dropdown
+- ReactiveDatePicker – Date selection
+- ReactiveSlider – Slider input
+
 
 ## 🧠 How It Works
 - Models extend ReactiveModel from reactive_orm.
-- Form widgets automatically listen to field changes and update.
-- ReactiveBuilder allows custom reactive UI previews.
-- Nested models propagate changes upwards automatically.
+- Form widgets automatically listen to field changes and rebuild accordingly.
+- `watchField()` and `watchComputed()` allow fine-grained reactive UI updates.
+- Nested models propagate changes upward automatically.
+- Minimal boilerplate; declarative, ORM-style reactive forms.
+
 
 ## 📌 Summary
-`reactive_orm_forms` is ideal for building reactive Flutter forms with minimal boilerplate 
-and optimized field-wise reactivity, 
-fully leveraging the power of reactive_orm.
+- `reactive_orm_forms` is ideal for building reactive Flutter forms with:
+- Minimal boilerplate
+- Fine-grained field-level reactivity
+- Computed and watched UI updates
+- Full support for nested and shared models 
+
+### It fully leverages the power of reactive_orm to create reactive forms that scale with your application.
+
 
